@@ -1,8 +1,10 @@
 package com.compose.instagram_profile_screen_compose
 
+import android.widget.Toast
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -330,7 +332,9 @@ fun ButtonSection(
             icon = Icons.Default.KeyboardArrowDown,
             modifier = Modifier
                 .defaultMinSize(minWidth = minWidth)
-                .height(height)
+                .height(height).clickable {
+                    print("Following button clicked!")
+                }
         )
         ActionButton(
             text = "Message",
@@ -368,10 +372,16 @@ fun ActionButton(
                 shape = RoundedCornerShape(5.dp)
             )
             .padding(6.dp)
+            .clickable {
+                print("clicked!!")
+            }
     ) {
         if (text != null) {
             Text(
                 text = text,
+                modifier = modifier.clickable {
+                    print("text clicked")
+                },
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 14.sp
             )

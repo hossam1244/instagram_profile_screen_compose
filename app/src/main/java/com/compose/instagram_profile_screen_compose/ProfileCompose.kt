@@ -145,6 +145,7 @@ fun TopBar(
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
+        // this similar to expanded widget in flutter
         Column(
             Modifier
                 .fillMaxWidth()

@@ -128,7 +128,6 @@ fun TopBar(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
-
         modifier = modifier
             .fillMaxWidth()
     ) {
@@ -179,21 +178,22 @@ fun ProfileSection(
                 .padding(horizontal = 20.dp)
         ) {
             RoundImage(
-                image = painterResource(id = R.drawable.philipp),
+                image = painterResource(id = R.drawable.hossam),
                 modifier = Modifier
                     .size(100.dp)
+                    // this is similar to flex in flutter
                     .weight(3f)
             )
             Spacer(modifier = Modifier.width(16.dp))
             StatSection(modifier = Modifier.weight(7f))
         }
         ProfileDescription(
-            displayName = "Programming Mentor",
-            description = "10 years of coding experience\n" +
-                    "Want me to make your app? Send me an email!\n" +
-                    "Subscribe to my YouTube channel!",
-            url = "https://youtube.com/c/PhilippLackner",
-            followedBy = listOf("codinginflow", "miakhalifa"),
+            displayName = "Mobile Engineer",
+            description = "7 years of coding experience\n" +
+                    "Real Madrid Fan!\n" +
+                    "",
+            url = "",
+            followedBy = listOf("cr7", "mobiledev"),
             otherCount = 17
         )
     }

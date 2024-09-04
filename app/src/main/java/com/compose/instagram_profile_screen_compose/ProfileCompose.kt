@@ -287,6 +287,7 @@ fun ProfileDescription(
         )
         if (followedBy.isNotEmpty()) {
             Text(
+                // lovely ( buildAnnotatedString <3 )
                 text = buildAnnotatedString {
                     val boldStyle = SpanStyle(
                         color = Color.Black,

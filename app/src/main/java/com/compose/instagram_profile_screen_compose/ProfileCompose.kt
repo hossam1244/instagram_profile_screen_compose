@@ -16,6 +16,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,9 +45,11 @@ fun ProfileScreen() {
     var selectedTabIndex by remember {
         mutableStateOf(0)
     }
+
     Column(modifier = Modifier.fillMaxSize()) {
+        Spacer(modifier = Modifier.height(30.dp))
         TopBar(
-            name = "philipplackner_official",
+            name = "Hossam Rakha",
             modifier = Modifier
                 .padding(10.dp)
         )
@@ -101,7 +104,7 @@ fun ProfileScreen() {
         ) {
             selectedTabIndex = it
         }
-        when(selectedTabIndex) {
+        when (selectedTabIndex) {
             0 -> PostSection(
                 posts = listOf(
                     painterResource(id = R.drawable.kmm),
@@ -124,28 +127,36 @@ fun TopBar(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
+
         modifier = modifier
             .fillMaxWidth()
     ) {
         Icon(
-            imageVector = Icons.Default.ArrowBack,
+            imageVector = Icons.Default.KeyboardArrowLeft,
             contentDescription = "Back",
             tint = Color.Black,
             modifier = Modifier.size(24.dp)
         )
+        Spacer(modifier = Modifier.width(10.dp))
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .weight(1f)){
+        }
         Icon(
             painter = painterResource(id = R.drawable.ic_bell),
             contentDescription = "Back",
             tint = Color.Black,
             modifier = Modifier.size(24.dp)
         )
+        Spacer(modifier = Modifier.width(10.dp))
         Icon(
             painter = painterResource(id = R.drawable.ic_dotmenu),
             contentDescription = "Back",
@@ -273,7 +284,7 @@ fun ProfileDescription(
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
-        if(followedBy.isNotEmpty()) {
+        if (followedBy.isNotEmpty()) {
             Text(
                 text = buildAnnotatedString {
                     val boldStyle = SpanStyle(
@@ -285,11 +296,11 @@ fun ProfileDescription(
                         pushStyle(boldStyle)
                         append(name)
                         pop()
-                        if(index < followedBy.size - 1) {
+                        if (index < followedBy.size - 1) {
                             append(", ")
                         }
                     }
-                    if(otherCount > 2) {
+                    if (otherCount > 2) {
                         append(" and ")
                         pushStyle(boldStyle)
                         append("$otherCount others")
@@ -356,14 +367,14 @@ fun ActionButton(
             )
             .padding(6.dp)
     ) {
-        if(text != null) {
+        if (text != null) {
             Text(
                 text = text,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 14.sp
             )
         }
-        if(icon != null) {
+        if (icon != null) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
@@ -429,7 +440,7 @@ fun PostTabView(
                 Icon(
                     painter = item.image,
                     contentDescription = item.text,
-                    tint = if(selectedTabIndex == index) Color.Black else inactiveColor,
+                    tint = if (selectedTabIndex == index) Color.Black else inactiveColor,
                     modifier = Modifier
                         .padding(10.dp)
                         .size(20.dp)
